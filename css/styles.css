@@ -57,6 +57,7 @@ body {
     margin-left: var(--list-portfolio-gap);
     margin-top: var(--list-portfolio-gap);
 }  */
+
 .list-doing {
     display: flex;
     gap: 24px;
@@ -81,6 +82,10 @@ img {
     height: auto;
 } 
 .page-header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
     margin: 0 auto;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -107,12 +112,30 @@ img {
 /* .team-worker {
     flex-basis: calc((100% - (24px * 3)) / 4);
 } */
-.nav-header .link {
+
+.link.nav.current::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--primary-brand-color);
+    border-radius: 2px;
+    bottom: -28px;   
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link.nav {
+    display: block;
+    position: relative;
     color: var(--title-text-color);
     font-weight: 500;
     line-height: 1.5;
-    text-decoration: none;   
+    text-decoration: none;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  
 }
+
 .logo-link,
 .link-cards,
 .link {
@@ -127,7 +150,7 @@ img {
 }
 .logo-link {
     padding-top: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 28px;
     color: var(--primary-brand-color);
     font-weight: 800;
     font-size: 18px;
@@ -147,25 +170,29 @@ img {
     color: var(--title-text-color);
     list-style: none;
     font-weight: 500;
-    font-family: inherit;
+    font-family: inherit;   
 }
+
 .nav-header .item:not(:last-child) {
     margin-right: 40px;  
 }
 .nav-header.list {
     margin-left: 76px;
-    padding: 24px 0;
+    padding-top: 24px;
+    padding-bottom: 28px;
 }
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 72px;  
+    height: 76px;  
 }
 .list-address {
     display: flex;
     align-items: center;
     margin-left: 332px;
+    padding-top: 24px;
+    padding-bottom: 28px;
 }
 .item:not(:last-child) {
     margin-right: 40px;
@@ -196,7 +223,7 @@ img {
 .hero {
     max-width: 1440px;
     margin: 0 auto;
-    margin-top: 0px;
+    margin-top: 76px;
     padding-top: 188px;
     padding-bottom: 188px;
     background-color: var(--title-text-color);
@@ -219,7 +246,9 @@ img {
     border: none;
     background-color: var(--primary-brand-color);
     color: var(--second-text-color);
-    text-align: center;   
+    text-align: center;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);   
 }
 .btn.one:hover, 
 .btn.one:focus {   
@@ -299,6 +328,8 @@ line-height: 1.2;
     border: 1px solid var(--subtle-text-color);
     border-radius: 4px;
     fill: var(--subtle-text-color);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 } 
 .customer-link:hover,
 .customer-link:focus {
@@ -336,6 +367,8 @@ line-height: 1.2;
     border-radius: 50%;
     background-color: var(--primary-brand-color);
     fill: var(--background-color);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-link:hover,
 .social-link:focus {
@@ -348,11 +381,69 @@ line-height: 1.2;
     padding: 8px;
     border-radius: 50%;
     background-color: var(--primary-text-color);
-    fill: var(--background-color);  
+    fill: var(--background-color);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  
 }
 .social-link_footer:hover,
 .social-link_footer:focus {
     background-color: var(--succes-color-green);
+}
+
+.backdrop {
+position: fixed;
+z-index: 1000;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(46, 47, 66, 0.4);
+transition: opacity 250ms,visibility 250ms;
+}
+.backdrop.is-hidden {
+visibility: hidden;
+opacity: 0;
+pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+transform: translate(-50%, -50%);
+opacity: 0;
+transition-delay: 250ms;
+}
+.modal {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -66%);
+transition: transform 250ms;
+transition-delay: 250ms;
+width: 408px;
+height: 576px;
+border-radius: 4px;
+background-color: #FFFFFF;
+box-shadow: 0px 2px rgba(0, 0, 0, 0.2),
+ 0px 1px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.14);
+}
+.btn.modal-button {
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+top: 24px;
+right: 24px;
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background-color: var(--accent-color);
+border: 1px solid #0000001A;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn.modal-button:hover,
+.btn.modal-button:focus {
+    fill: var(--background-color);
+    background-color: var(--pressed-state-color);
 }
 /* portfolio */
 .btn {    
@@ -368,6 +459,8 @@ line-height: 1.2;
     line-height: 1.5;
     letter-spacing: 0.04em;
     cursor: pointer;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn:hover,
 .btn:focus {
@@ -412,6 +505,7 @@ line-height: 1.2;
 .portfolio-section {
     padding-top: 96px;
     padding-bottom: 120px;
+    margin-top: 76px;
 }
 .link-content {
     padding-top: 32px;
@@ -429,6 +523,7 @@ line-height: 1.2;
 }
 .link-cards {
     display: block;
+    
     width: 360px;
     height: 420px;
 } 
@@ -436,5 +531,34 @@ line-height: 1.2;
 .link-cards:focus {
     border: 0.5px solid var(--accent-color);
     box-shadow: 0px 2px rgba(46, 47, 66, 0.08),
-    0px 1px rgba(46, 47, 66, 0.16), 0px 1px rgba(46, 47, 66, 0.08);
+    0px 1px rgba(46, 47, 66, 0.16),
+    0px 1px rgba(46, 47, 66, 0.08);
+}
+.link-cards-wrapper {
+    position: relative;
+    overflow: hidden;
+
+}
+.overley {
+display: block;
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+padding-top: 40px;
+padding-right: 32px;
+padding-left: 32px;
+padding-bottom: 164px;
+color: #f4f4fd;
+background-color: #4d5ae5;
+overflow: hidden;
+/* overflow: auto; */
+transform: translate(0, 100%);
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link-cards:hover .overley,
+.link-cards:focus .overley {
+    transform: translate(0, 0);
 }

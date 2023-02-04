@@ -15,13 +15,16 @@
     <header class="section page-header">
       <div class="container header-container">
         <nav class="nav-header">
-          <a class="logo-link" href="./index.html">WEB<span class="logo-dark">STUDIO</span></a>
+          <a class="logo-link" href="./index.html">WEB<span class="logo-dark">STUDIO</span>
+          </a>
           <ul class="nav-header list">
-            <li class="item"><a class="link nav current" href="./index.html">Studio</a></li>
+            <li class="item">
+              <a class="link nav current" href="./index.html">Studio</a></li>
             <li class="item">
               <a class="link nav" href="./portfolio.html">Portfolio</a>
             </li>
-            <li class="item"><a class="link nav" href>Contacts</a></li>
+            <li class="item">
+              <a class="link nav" href>Contacts</a></li>
           </ul>
         </nav>
         <address class="address-header">
@@ -40,7 +43,7 @@
       <section class="section hero">
         <div class="container">
           <h1 class="hero-title">Effective Solutions <br> for Your Business</h1>
-          <button class="btn hero-button pointer" type="button">Order Service</button>
+          <button class="btn hero-button pointer" type="button" data-modal-open>Order Service</button>
         </div>
       </section>
       <section class="section section-advantage">
@@ -319,5 +322,15 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+              <button class="btn modal-button" type="button" data-modal-close>
+                <svg class="modal-icon" width="8px" height="8px">
+                <use href="./images2/close-black.svg#icon-close-black-18dp"></use>
+              </svg>
+            </button>
+            </div>
+          </div>
+     <script src="./js/modal.js"></script>     
   </body>
 </html>
