@@ -122,7 +122,7 @@ img {
     height: 4px;
     background-color: var(--primary-brand-color);
     border-radius: 2px;
-    bottom: -28px;
+    bottom: 0px;
 }
 .link.nav {
     display: block;
@@ -130,6 +130,8 @@ img {
     color: var(--title-text-color);
     font-weight: 500;
     line-height: 1.5;
+    padding-top: 24px;
+    padding-bottom: 28px;
     text-decoration: none;
     transition-property: color;
     transition-duration: 250ms;
@@ -178,8 +180,7 @@ img {
 }
 .nav-header.list {
     margin-left: 76px;
-    padding-top: 24px;
-    padding-bottom: 28px;
+
 }
 .header-container {
     display: flex;
@@ -187,18 +188,25 @@ img {
     align-items: center;
     height: 76px;  
 }
+.address-header {
+    margin-left: 332px;
+
+}
 .list-address {
     display: flex;
     align-items: center;
-    margin-left: 332px;
-    padding-top: 24px;
-    padding-bottom: 28px;
+    justify-content: center;
+    /* margin-left: 332px;  */
+    /* padding-top: 24px;
+    padding-bottom: 28px;  */
 }
 .item:not(:last-child) {
     margin-right: 40px;
 }
 .mail {
-    padding: 24px 0;
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 28px;
     color: var(--primary-text-color);
     font-style: normal;
     font-family: inherit;
@@ -206,7 +214,9 @@ img {
     text-decoration: none; 
 }
 .phone-link {
-    padding: 24px 0;
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 28px;
     color: var(--primary-text-color);
     font-style: normal;
     font-family: inherit;
